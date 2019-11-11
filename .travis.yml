@@ -5,6 +5,8 @@ service:
 
 before_install:
   - docker build -t kwonghung/dnsmasq:2.80-apline-3.10 .
+  - echo "$DOCKER_HUB_PASSWD" | docker login --username "$DOCKER_HUB_LOGIN" --password-stdin
+  - docker push kwonghung/dnsmasq:2.80-apline-3.10
 
 script:
   - mkdir files-to-gh-pages
